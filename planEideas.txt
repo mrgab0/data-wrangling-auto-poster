@@ -1,0 +1,19 @@
+*tiene que iniciar al encender la pc con un retardo y si es posible solo cuando
+haya internet 
+
+
+*tambien tiene que obtener los datos de monitordolarvenezuela.com
+para almacenarlos en la base de datos desde el dia uno...
+
+*tenemos que enlazarla con cdmon a el dominio alonsodelosrios.com.ve con 
+un subdominio puede ser 13toros o monitordolarremix.alonsodelosrios.com.ve 
+esta larga xD
+
+*hay que crear la pagina en localhost luego esa pagina se sube a firebase
+
+
+*la pagina localhost se le tomara foto con phantomjs al area indicada 
+para sacar el recuadro perotinente y asi automatizar absolutamente todo
+
+*con nightmarejs automatizar la subida de ser posible o sino buscar 
+otra opciones otras soluciones

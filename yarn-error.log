@@ -1,0 +1,55 @@
+Arguments: 
+  D:\node 12.10\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js start
+
+PATH: 
+  D:\cygwin64\usr\local\bin;D:\cygwin64\bin;C:\Python38\Scripts;C:\Python38;C:\Program Files (x86)\Common Files\Intel\OpenCL\windows\compiler\lib\intel64_win;C:\Program Files (x86)\Common Files\Intel\OpenCL\windows\compiler\lib\ia32_win;C:\ProgramData\Oracle\Java\javapath;D:\python 3\Scripts;D:\python 3;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;D:\Curl\bin;D:\puttyta;D:\qemu;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\Yarn\bin;C:\Windows\system32\wbem;D:\bluesoleil\Mobile;D:\ffmpeg\bin;D:\cygwin64;C:\Windows\System32\Windows System Resource Manager\bin;C:\Windows\idmu\common;C:\Users\pece\AppData\Local\Programs\GIMP 2\bin;D:\Atom;D:\Sublime_Text;D:\node 12.10;C:\Windows\System32\WindowsPowerShell\v1.0;C:\ProgramData\chocolatey\bin;D:\IncrediBuild;D:\mongoS\bin;C:\tools\NirLauncher\Nirsoft;C:\Program Files\Notepad++;D:\Git\cmd;C:\Users\pece\AppData\Local\Programs\Microsoft VS Code\bin;D:\sheep\Microsoft VS Code\bin; D;D:\cygwin64\qemu; D;D:\cygwin64\Sublime_Text\sublime_text.exe; D;D:\cygwin64\Atom\atom.exe;C:\Users\pece\AppData\Local\Yarn\bin;C:\Users\pece\AppData\Roaming\npm
+
+Yarn version: 
+  1.19.1
+
+Node version: 
+  13.10.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: D:\Users\gaborama\Mega\development\proyectos\13 toros\package.json: Unexpected token * in JSON at position 523
+      at JSON.parse (<anonymous>)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (C:\Program Files (x86)\Yarn\lib\cli.js:304:30)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:315:13
+
+npm manifest: 
+  {
+    "name": "13-toros",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "node index.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "cheerio": "^1.0.0-rc.3",
+      "colors": "^1.4.0",
+      "csvtojson": "^2.0.10",
+      "fecha": "^4.2.0",
+      "jimp": "^0.9.3",
+      "json2csv": "^5.0.0",
+      "moment": "^2.24.0",
+      "mongodb": "^3.5.6",
+      "mongoose": "^5.9.10",
+      "request": "^2.88.2",
+  	"phantomjs: "*"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
