@@ -75,13 +75,14 @@ app.get('/api/monitorDolarLocal/:modelodatosId', (req, res) => {
 app.get('/api/monitorDolarLocal/dia/modelodatosDiario', (req, res,) => {
 		
 		
-		modelodatos.find({ dia : 'sábado 25º' }, (err, modelodatos) => {
+		
+		modelodatos.find({ createdOn : '2020-05-12' }, (err, modelodatos) => {
 
 			if (err) return res.status(500).send({message: `error en db nativo ${err}`})
 			if(!modelodatos) return res.status(404).send({message: `no existe ese dia`})
 
 			res.status(200).send({ modelodatos })
-		}).sort({createdOn: 'desc'}).select('_id dia mes año promedio moneda agencia precio igual porcentaje').limit()
+		}).sort({createdOn: 'desc'}).limit()
 
 
 		

@@ -11,8 +11,9 @@ mongoose.set('useUnifiedTopology', true);
 mongoose.set('useNewUrlParser', true);
 mongoose.connect('mongodb://localhost/monitorDolarLocal');
 
-var schemaMonitorDolar = mongoose.model('baseDedatos', {
-	
+var schemaMonitorDolar = mongoose.model('modelodatos', {
+	         
+          createdOn: { type: Date, default: Date.now, unique:true },
 					"dia": String,
           "mes": String,
           "año": String,
@@ -106,12 +107,15 @@ module.exports = function() {
            
            const nombres = $(el).find(selectorNombres).append('').text();
            const curandoPrecios = $(el).find(selectorTruco).empty();
-           const precios = $(el).find(selectorPrecios).append('').text().replace(/\,\s\s+/g, '');
-           const porcentajes = $(el).find(selectorPorcentaje).append('').text();
+           const preciosCrudos = $(el).find(selectorPrecios).append('').text().replace(/\,\s\s+/g, '');
+           const porcentajesCrudos = $(el).find(selectorPorcentaje).append('').text();
            
-           var datos = nombres + precios + igual + porcentajes + '\n';
 
-           var datosParaGuardar = `'` + nombres + precios + igual + porcentajes;
+           var precios = parseFloat(preciosCrudos);
+           var porcentajes = parseFloat(porcentajesCrudos);
+           var datos = nombres + preciosCrudos + igual + porcentajesCrudos + '\n';
+
+           var datosParaGuardar = `'` + nombres + preciosCrudos + igual + porcentajesCrudos;
 
            
            //let fecha = new Date();
@@ -119,7 +123,7 @@ module.exports = function() {
            //console.log('La fecha actual es', fechaMomentjs + horaMomentjs);          
            console.log('---'.verbose);
            
-           console.log(`'` + nombres + precios + igual + porcentajes);
+           console.log(`'` + nombres + preciosCrudos + igual + porcentajesCrudos);
 
             
            //captando los headers 
@@ -177,7 +181,7 @@ module.exports = function() {
           valoragencia = new Object();
           var contenidoItems = new Object();
           contenidoItems.agencia = nombres;
-          contenidoItems.valoragencia = precios;
+          contenidoItems.valoragencia = preciosCrudos;
           contenidoItems.igual = '=';
           contenidoItems.porcentaje = porcentajes;
           
@@ -225,11 +229,11 @@ module.exports = function() {
                /*fin de probando */       
            /* creando base de datos */
 		   
-						var fechaDia = moment().format("dddd Do");
+						var fechaDia = moment().format("dddd D");
 						var mes = moment().format("MMMM");
 						var año = moment().format("YYYY");
 		   
-				var baseDedatos = new schemaMonitorDolar({
+				var modelodatos = new schemaMonitorDolar({
 							
               "dia": fechaDia,
               "mes": mes,
@@ -237,13 +241,13 @@ module.exports = function() {
               "promedio": tasaDelDia,         
               "moneda": "dolar",                   
               "agencia": nombres,
-              "precio": precios,
+              "precio": preciosCrudos,
               "igual": "=",
               "porcentaje": porcentajes
 			});
 			
       
-			baseDedatos.save(function(error){
+			modelodatos.save(function(error){
 					if (error){
 						console.log('error mongoose!!');
 					}
@@ -251,11 +255,11 @@ module.exports = function() {
 					
 			});
 			
-			var baseDeDatosCurada = JSON.stringify(baseDedatos);
+			var modelodatosCurada = JSON.stringify(modelodatos);
 			
 			//console.log(baseDeDatosCurada);
 			
-			fs.appendFileSync('datos1.json', baseDeDatosCurada, function(err){
+			fs.appendFileSync('datos1.json', modelodatosCurada, function(err){
                if (err) {
                  console.log('fallo al guardar los datos de hoy!!');
                } else {
