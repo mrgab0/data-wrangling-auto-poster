@@ -8,9 +8,11 @@ const modelodatos = require('../Database/modeloDatos');
 
 
 //confugrando mongo
-mongoose.set('useUnifiedTopology', true);
-mongoose.set('useNewUrlParser', true);
+mongoose.set('useUnifiedTopology', true); 
+mongoose.set('useNewUrlParser', true); 
+mongoose.set('useCreateIndex', true);
 //conectando a db
+// y servidor
 mongoose.connect('mongodb://localhost/monitorDolarLocal', (err,res)=> {
 	if (err) return err 
 		console.log(err);	
@@ -26,7 +28,8 @@ mongoose.connect('mongodb://localhost/monitorDolarLocal', (err,res)=> {
 	
 });
 
-//servidor
+
+
 
 
 app.use(bodyParser.urlencoded({ extended: true}));
@@ -52,13 +55,36 @@ app.get('/api/monitorDolarLocal', (req, res) => {
 app.get('/api/monitorDolarLocal/:modelodatosId', (req, res) => {
 		let modelodatosId = req.params.modelodatosId
 
-		modelodatos.findbyId(modelodatosId, (err, modelodatos) => {
+		modelodatos.findById(modelodatosId, (err, modelodatos) => {
 
-			if (err) return res.status(500).send({message: `errorsillo ${err}`})
-			if(!modelodatos) return res.status(404).send({message: `no existe ese dia`})
+			if (err) return res.status(500).send({message: `error en db nativo ${err}`})
+			if(!modelodatos) return res.status(404).send({message: `no existe ese id`})
 
 			res.status(200).send({ modelodatos })
 		})
+
+});
+
+
+
+//queriying data to dia
+
+
+
+//requiriendo documentos por dia
+app.get('/api/monitorDolarLocal/dia/modelodatosDiario', (req, res,) => {
+		
+		
+		modelodatos.find({ dia : 'sábado 25º' }, (err, modelodatos) => {
+
+			if (err) return res.status(500).send({message: `error en db nativo ${err}`})
+			if(!modelodatos) return res.status(404).send({message: `no existe ese dia`})
+
+			res.status(200).send({ modelodatos })
+		}).sort({createdOn: 'desc'}).select('_id dia mes año promedio moneda agencia precio igual porcentaje').limit()
+
+
+		
 
 });
 
@@ -69,6 +95,7 @@ app.post('/api/monitorDolarLocal', (req, res) => {
 
 	
 	let ModeloDatos = new modelodatos()
+	ModeloDatos.createdOn = req.body.createdOn
 	ModeloDatos.dia = req.body.dia
 	ModeloDatos.mes = req.body.mes
 	ModeloDatos.año = req.body.año
