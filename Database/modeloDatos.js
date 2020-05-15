@@ -10,12 +10,12 @@ var modeloDatosSchema = Schema({
 					"dia": String,
 					"mes": String,
 					"año": Number,
-					"promedio": Number,					
+					"promedio": String,					
 					"moneda": String, 									
 					"agencia": String,
-					"precio": Number,
+					"precio": String,
 					"igual": String,
-					"porcentaje": Number	
+					"porcentaje": String	
 });
 
 module.exports = mongoose.model('modeloDatos', modeloDatosSchema); 

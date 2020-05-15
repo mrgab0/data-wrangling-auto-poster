@@ -72,17 +72,17 @@ app.get('/api/monitorDolarLocal/:modelodatosId', (req, res) => {
 
 
 //requiriendo documentos por dia
-app.get('/api/monitorDolarLocal/dia/modelodatosDiario', (req, res,) => {
+app.get('/api/monitorDolarLocal/dia/:modelodatosDiario', (req, res,) => {
 		
+		let modelodatosDiario = req.params.modelodatosDiario
 		
-		
-		modelodatos.find({ createdOn : '2020-05-12' }, (err, modelodatos) => {
+		modelodatos.find({ dia: modelodatosDiario }, (err, modelodatos) => {
 
 			if (err) return res.status(500).send({message: `error en db nativo ${err}`})
 			if(!modelodatos) return res.status(404).send({message: `no existe ese dia`})
 
 			res.status(200).send({ modelodatos })
-		}).sort({createdOn: 'desc'}).limit()
+		}).sort({createdOn: 'desc'}).limit(8)
 
 
 		

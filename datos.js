@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 //confugrando mongo
 mongoose.set('useUnifiedTopology', true);
 mongoose.set('useNewUrlParser', true);
+mongoose.set('useCreateIndex', true);
 mongoose.connect('mongodb://localhost/monitorDolarLocal');
 
 var schemaMonitorDolar = mongoose.model('modelodatos', {
@@ -61,13 +62,16 @@ module.exports = function() {
 
             const curandoPrecios1 = $(el).find(selectorTruco1).empty();
             const curandoPrecios2 = $(el).find(selectorTruco2).empty();
-            const tasaDelDia = $(el).find(selectorTasaDelDia).append('').text().replace(/\s\s+/g, '');
+            const tasaDelDia = $(el).find(selectorTasaDelDia).text().replace(/\s/g, '');
 
             
+
             var tasaDelDiaCalc = `'` + tasaDelDia + `',` + '\n';
             var comentarioTasaDelDia = 'la tasa del dia es: ';
             var tasaDelDiaCurada = `'` + comentarioTasaDelDia + tasaDelDia + `',` + '\n';
             console.log(tasaDelDiaCurada);
+
+            
 
                   fs.appendFileSync('datos.csv', tasaDelDiaCalc, function(err){
                     if (err) {
@@ -107,15 +111,14 @@ module.exports = function() {
            
            const nombres = $(el).find(selectorNombres).append('').text();
            const curandoPrecios = $(el).find(selectorTruco).empty();
-           const preciosCrudos = $(el).find(selectorPrecios).append('').text().replace(/\,\s\s+/g, '');
-           const porcentajesCrudos = $(el).find(selectorPorcentaje).append('').text();
+           const precios = $(el).find(selectorPrecios).append('').text().replace(/\,\s\s+/g, '');
+           const porcentajes = $(el).find(selectorPorcentaje).append('').text();
            
 
-           var precios = parseFloat(preciosCrudos);
-           var porcentajes = parseFloat(porcentajesCrudos);
-           var datos = nombres + preciosCrudos + igual + porcentajesCrudos + '\n';
+           
+           var datos = nombres + precios + igual + porcentajes + '\n';
 
-           var datosParaGuardar = `'` + nombres + preciosCrudos + igual + porcentajesCrudos;
+           var datosParaGuardar = `'` + nombres + precios + igual + porcentajes;
 
            
            //let fecha = new Date();
@@ -123,7 +126,7 @@ module.exports = function() {
            //console.log('La fecha actual es', fechaMomentjs + horaMomentjs);          
            console.log('---'.verbose);
            
-           console.log(`'` + nombres + preciosCrudos + igual + porcentajesCrudos);
+           console.log(`'` + nombres + precios + igual + porcentajes);
 
             
            //captando los headers 
@@ -181,7 +184,7 @@ module.exports = function() {
           valoragencia = new Object();
           var contenidoItems = new Object();
           contenidoItems.agencia = nombres;
-          contenidoItems.valoragencia = preciosCrudos;
+          contenidoItems.valoragencia = precios;
           contenidoItems.igual = '=';
           contenidoItems.porcentaje = porcentajes;
           
@@ -241,7 +244,7 @@ module.exports = function() {
               "promedio": tasaDelDia,         
               "moneda": "dolar",                   
               "agencia": nombres,
-              "precio": preciosCrudos,
+              "precio": precios,
               "igual": "=",
               "porcentaje": porcentajes
 			});
