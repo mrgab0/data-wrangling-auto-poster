@@ -209,7 +209,7 @@ module.exports = function() {
 		  
 
           var valor = new Object();
-		  valor.dia = '23';
+		      valor.dia = '23';
           valor.moneda = 'dolar';
           valor.promedio_del_dia = tasaDelDia;
           valor.valor_del_dia = arrayValorDelDia;
