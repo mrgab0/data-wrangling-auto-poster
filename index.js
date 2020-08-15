@@ -11,8 +11,8 @@ const saveToDB = require('./saveToDB');
 //saveToDB();
 //Server();
 //Stories();
-Fecha();
-Datos();
+//Fecha();
+//Datos();
 
 
 
