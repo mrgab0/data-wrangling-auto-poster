@@ -8,11 +8,11 @@ const Server = require('./Backend/server');
 const saveToDB = require('./saveToDB');
 
 
-//saveToDB();
-//Server();
-//Stories();
-//Fecha();
-//Datos();
+saveToDB();
+Server();
+Stories();
+Fecha();
+Datos();
 
 
 
