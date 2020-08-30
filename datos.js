@@ -6,7 +6,7 @@ const moment = require('moment');
 const Fecha = require('./fecha');
 const mongoose = require('mongoose');
 
-//confugrando mongo
+//confugrando mongo db
 mongoose.set('useUnifiedTopology', true);
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useCreateIndex', true);
