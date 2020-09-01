@@ -12,6 +12,7 @@ colors.setTheme({
     help: 'cyan',
     warn: 'yellow',
     debug: 'blue',
+    error: ['red', 'bold'],
     error: ['red', 'bold']
   });
   
