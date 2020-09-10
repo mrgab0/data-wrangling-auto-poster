@@ -4,7 +4,7 @@ const request = require('request');
 const fs = require('fs');
 const moment = require('moment');
 const Fecha = require('./fecha');
-const mongoose = require('mongoose');
+//const mongoose = require('mongoose');
 
 //confugrando mongo db
 //mongoose.set('useUnifiedTopology', true);
