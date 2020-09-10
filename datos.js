@@ -10,7 +10,7 @@ const Fecha = require('./fecha');
 //mongoose.set('useUnifiedTopology', true);
 //mongoose.set('useNewUrlParser', true);
 //mongoose.set('useCreateIndex', true);
-//mongoose.connect('mongodb://localhost/monitorDolarLocal');
+mongoose.connect('mongodb://localhost/monitorDolarLocal');
 
 var schemaMonitorDolar = mongoose.model('modelodatos', {
 	         
