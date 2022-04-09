@@ -19,7 +19,7 @@
     "fecha": "^4.2.0",
     "jimp": "^0.9.3",
     "json2csv": "^5.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "mongodb": "^3.5.6",
     "mongoose": "^5.9.10",
     "nightmare": "^3.0.2",
